@@ -1,0 +1,171 @@
+<div class="main">
+  <div class="header">
+    <img src="../../../assets/images/header-kyc.png" alt="header" />
+  </div>
+  <div class="content">
+    <div class="mobile-wrapper">
+      <div class="mobile__number">Consumer Mobile Number</div>
+      <div class="mobile__number__input">
+        <input
+          type="number"
+          [(ngModel)]="mobileNumber"
+          (ngModelChange)="validateMobileNumber()"
+          onkeydown="javascript: return event.keyCode === 8 || event.keyCode === 46 ? true : !isNaN(Number(event.key))"
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+          placeholder="9XXXXXXXX9"
+          class="form-control"
+          autocomplete="off"
+          maxlength="10"
+          required
+        />
+        <ng-container *ngIf="invalidMobile">
+          <p class="invalid-message">Please fill the Valid Mobile Number.</p>
+        </ng-container>
+        <ng-container *ngIf="nullMobile">
+          <p class="invalid-message">Please fill the Mobile Number.</p>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="upload-picture-wrapper">
+      <div class="upload__picture">Passport Size Photo</div>
+      <div class="upload__picture__input">
+        <input
+          type="file"
+          name="picture"
+          id="upload-picture"
+          accept="image/*"
+          (change)="onPictureChange($event)"
+        />
+        <label for="upload-picture"
+          >{{ AddImage ? "Add Image" : ImageName }}
+          <span>
+            <img
+              src="../../../assets/images/save-plus-icon.png"
+              alt="save"
+            /> </span
+        ></label>
+      </div>
+      <ng-container *ngIf="nullPicture">
+        <p class="invalid-message">Please Upload a Passport size Photo</p>
+      </ng-container>
+    </div>
+
+    <div class="upload-picture-wrapper">
+      <div class="upload__picture">Pan Card<sup>*</sup></div>
+      <div class="upload__picture__input">
+        <input
+          type="file"
+          name="pan"
+          id="upload-picture-pan"
+          accept="image/*"
+          (change)="onPanChange($event)"
+        />
+        <label for="upload-picture-pan"
+          >{{ AddPanImage ? "Add Image" : PanImageName }}
+          <span>
+            <img
+              src="../../../assets/images/save-plus-icon.png"
+              alt="save"
+            /> </span
+        ></label>
+      </div>
+      <ng-container *ngIf="nullPan">
+        <p class="invalid-message">Please Upload a Pancard.</p>
+      </ng-container>
+    </div>
+
+    <div class="upload-address-wrapper">
+      <div class="upload__address__adhaar">
+        Address Proof<sup>*</sup> <br />
+        (Adhar Card / Voter ID / Passport)
+      </div>
+      <select
+        [(ngModel)]="proofListSelected"
+        (ngModelChange)="onProofChange($event)"
+      >
+        <!-- style="-webkit-appearance: none" -->
+        <option
+          class="options"
+          *ngFor="let proof of proofList"
+          [value]="proof.id"
+        >
+          {{ proof.value }}
+        </option>
+      </select>
+
+      <div class="front-back-container">
+        <div class="upload__address__adhaar__input">
+          <input
+            type="file"
+            id="upload-address"
+            accept="image/*"
+            (change)="onAddressChange($event)"
+          />
+          <label class="front" for="upload-address"
+            >{{ AddAnyImage ? "Front" : AnyImageName }}
+            <span>
+              <img
+                src="../../../assets/images/save-plus-icon.png"
+                alt="save"
+              /> </span
+          ></label>
+        </div>
+        <ng-container *ngIf="nullAddress">
+          <p class="invalid-message">Please Upload a Front Image.</p>
+        </ng-container>
+        <ng-container>
+          <div class="upload__address__adhaar__input">
+            <input
+              type="file"
+              id="upload-address-back"
+              accept="image/*"
+              (change)="onAddressBackChange($event)"
+            />
+            <label class="back" for="upload-address-back"
+              >{{ AddAnyBackImage ? "Back" : AnyBackImageName }}
+              <span>
+                <img
+                  src="../../../assets/images/save-plus-icon.png"
+                  alt="save"
+                /> </span
+            ></label>
+          </div>
+          <ng-container *ngIf="nullBackAddress">
+            <p class="invalid-message">Please Upload a Back Image.</p>
+          </ng-container>
+        </ng-container>
+      </div>
+
+      <!-- mobileNumber != '' &&
+      picture != undefined &&
+      panPicture != undefined &&
+      address != undefined -->
+      <ng-container>
+        <div class="upload__address__adhaar__input" style="margin-top: 1em">
+          <input type="submit" id="submited" (click)="onSubmitApi($event)" />
+          <label for="submited" class="submit-button">Submit</label>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="isSubmit">
+        <p class="invalid-message" style="margin-top: 1em">
+          Please Fill All the Details
+        </p>
+      </ng-container>
+    </div>
+  </div>
+  <ng-container *ngIf="isLoader">
+    <div class="loader-wrapper">
+      <div id="loader">
+        <div l a></div>
+        <div l b></div>
+        <div l c></div>
+        <div l d></div>
+        <div l e></div>
+        <div l f></div>
+        <div l g></div>
+        <div l h></div>
+      </div>
+    </div>
+  </ng-container>
+</div>

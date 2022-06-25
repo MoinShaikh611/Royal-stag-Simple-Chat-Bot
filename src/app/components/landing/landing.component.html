@@ -1,0 +1,38 @@
+<div class="main">
+  <img
+    class="header"
+    src="../../../assets/images/royal-stag-header.png"
+    alt="header-image-landing"
+  />
+  <div class="content">
+    <div class="content-header">
+      <h1>Have you earned your</h1>
+      <span>Mark of Purity?</span>
+    </div>
+    <div class="content-language-para">Choose Language</div>
+    <div class="content-languages">
+      <div style="padding: .5rem 1.6rem;" class="content-link sm" (click)="changeToHindi()" #hindiBg>
+        <a #hindiColor>हिंदी</a>
+      </div>
+      <div style="padding: 0.5rem 0.9rem;" class="content-link sm" (click)="changeToEnglish()" #englishBg>
+        <a #englishColor>ENGLISH</a>
+      </div>
+      <div style="padding: .5rem 1.2rem;" class="content-link sm" (click)="changeToTelugu()" #teluguBg>
+        <a #teluguColor>తెలుగు</a>
+      </div>
+    </div>
+    <div class="content-para">To earn your Mark of Purity</div>
+    <div
+      class="content-link"
+      (click)="gotoJourney()"
+      [appInactive]="disableInputs"
+    >
+      <a>CLICK HERE</a>
+    </div>
+  </div>
+  <img
+    class="bottom"
+    src="../../../assets/images/royal-stag-bottom.png"
+    alt="bottom-image-landing"
+  />
+</div>

@@ -1,0 +1,45 @@
+<div>
+  <div class="question-bubble">{{ language.kindlyEnter }}</div>
+  <div style="clear: both"></div>
+  <div class="text-end" *ngIf="showNumberBubble">{{ mobileNumber }}</div>
+  <div style="clear: both"></div>
+  <div *ngIf="!showNumberBubble" class="position-relative">
+    <input
+      type="number"
+      onkeydown="javascript: return event.keyCode === 8 ||
+    event.keyCode === 46 ? true : !isNaN(Number(event.key))"
+      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+      placeholder="MOBILE NUMBER"
+      class="form-control"
+      [(ngModel)]="mobileNumber"
+      (ngModelChange)="validateMobileNumber()"
+      autocomplete="off"
+      maxlength="10"
+    />
+    <button
+      class="send-btn-svg"
+      [disabled]="!isMobileNumberValid"
+      (click)="sendNumber()"
+    >
+      <img
+        width="100%"
+        class="bg-transparent"
+        #sendSvgImage
+        src="../../../assets/images/send-btn-svg.svg"
+        alt="send-btn-svg"
+      />
+    </button>
+  </div>
+  <div
+    class="question-bubble"
+    *ngIf="whichTimeUser > 1 && whichTimeUser < 5 && endMessage"
+  >
+    {{ language.tryTommorow }}
+  </div>
+  <div class="question-bubble" *ngIf="whichTimeUser > 4">
+    {{ language.afterFourBadges }}
+  </div>
+  <div class="question-bubble" *ngIf="whichTimeUser > 1 && endMessage">
+    {{ language.byePara }}
+  </div>
+</div>

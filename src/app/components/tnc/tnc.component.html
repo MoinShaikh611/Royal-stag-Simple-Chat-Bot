@@ -1,0 +1,46 @@
+<div>
+  <div class="question-bubble">
+    {{ language.firstPara }}
+    <button
+      class="click-here"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      {{ language.button }}
+    </button>
+    {{ language.endPara }}
+  </div>
+  <div [appInactive]="disableInputs" class="option">
+    <input
+      type="radio"
+      class="btn-check"
+      name="tnc"
+      id="tnc-op1"
+      autocomplete="off"
+    />
+    <label
+      [appClickColor]="'#7e1615'"
+      class="btn"
+      for="tnc-op1"
+      (click)="proceed()"
+      >{{ language.option1 }}</label
+    >
+    <input
+      type="radio"
+      class="btn-check"
+      name="tnc"
+      id="tnc-op2"
+      autocomplete="off"
+    />
+    <label
+      [appClickColor]="'#7e1615'"
+      class="btn ms-1"
+      for="tnc-op2"
+      (click)="end()"
+      >{{ language.option2 }}</label
+    >
+  </div>
+  <div class="question-bubble" *ngIf="showEndMessage">
+    {{ language.endMessage }}
+  </div>
+</div>

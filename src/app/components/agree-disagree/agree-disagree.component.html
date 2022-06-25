@@ -1,0 +1,14 @@
+<div class="question-bubble">
+  {{ language.receivingReminder }}
+  <a
+    target="_blank"
+    href="https://www.pernod-ricard.com/en/locations/india/pernod-ricard-india-legal"
+  >
+    https://www.pernod-ricard.com/en/locations/india/pernod-ricard-india-legal.
+  </a>
+</div>
+
+<div class="question-bubble" *ngIf="showMessage">
+  {{ language.offerAvailable }}
+</div>
+<div class="question-bubble" *ngIf="whichTimeUser > 3">{{ language.seeyousoon }}</div>

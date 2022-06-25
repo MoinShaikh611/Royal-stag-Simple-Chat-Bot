@@ -1,0 +1,190 @@
+.question-bubble {
+  position: relative;
+  border-radius: 1.2em;
+  background-color: #fae7bf;
+  color: black;
+  text-align: start;
+  padding: 0.4em 0.8em 0.5em 1em;
+  float: left;
+  font-size: 80%;
+  line-height: 1.1;
+  margin: 1em 1em;
+}
+html,
+body {
+  overflow: hidden;
+  background: rgb(41 1 3);
+}
+.question-bubble::before {
+  content: "";
+  width: 2em;
+  height: 1.3em;
+  background: #fae7bf;
+  -webkit-clip-path: polygon(60% 0, 7% 0, 13% 99%);
+  clip-path: polygon(60% 0, 7% 0, 13% 99%);
+  position: absolute;
+  bottom: -15px;
+  left: 10px;
+}
+
+.option {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 70%;
+  margin: 0.1em 3em;
+  grid-gap: 1em;
+  grid-gap: 1em;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0 1em;
+  border-radius: 100px;
+  font-size: 13.7px;
+  border: 1px solid #dec4c4;
+  background: #ffffff;
+  color: black;
+  transition: 0.5s ease-in-out;
+  text-align: start;
+}
+.btn-check:focus + .btn,
+.btn:focus {
+  box-shadow: none;
+}
+
+input:not([type]),
+input[type="number"],
+input[type="text"] {
+  width: 90%;
+  color: white;
+  background: #7e1615;
+  border: none;
+  outline-width: 0;
+  border-radius: 10px;
+  height: 30px;
+  padding: 1em;
+  margin: 1em;
+}
+
+input:not([type]),
+input[type="number"]:focus,
+input[type="text"]:focus {
+  color: white;
+  background: #7e1615;
+  box-shadow: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.send-btn-svg {
+  position: absolute;
+  top: 2px;
+  right: 21px;
+  width: auto;
+  background: none;
+  border: none;
+}
+
+.send-btn-svg img {
+  filter: invert(46%) sepia(99%) saturate(2%) hue-rotate(36deg) brightness(90%)
+    contrast(93%);
+  width: 24px;
+}
+
+.text-end {
+  position: relative;
+  border-radius: 1em;
+  width: auto;
+  background: #7e1615;
+  color: #fff;
+  padding: 0.3em 0.7em;
+  margin: 0.5em 1em;
+  float: right;
+  border: 1px solid #ffffff;
+}
+
+.text-end::before {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: 10px;
+  bottom: -16px;
+  border: 8px solid;
+  border-color: #fff #fff transparent transparent;
+}
+
+.text-end::after {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: 12px;
+  bottom: -12px;
+  border: 8px solid;
+  border-color: #7e1615 #7e1615 transparent transparent;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Works on Firefox */
+.modal-body {
+  scrollbar-width: thin;
+  scrollbar-color: #3a0a0c #e5d8b8;
+}
+
+/* Works on Chrome, Edge, and Safari */
+.modal-body::-webkit-scrollbar {
+  width: 7px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: #e5d8b8;
+  border-radius: 20px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background-color: #3a0a0c;
+  border-radius: 20px;
+  height: 100px;
+}
+
+@media screen and (min-width: 576px) {
+  .send-btn-svg {
+    right: 40px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 20px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #fae7bf;
+    border-radius: 20px;
+    height: 100px;
+  }
+  html,
+  body {
+    background: rgb(255 255 255) !important;
+  }
+}

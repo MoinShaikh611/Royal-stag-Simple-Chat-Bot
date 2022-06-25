@@ -1,0 +1,18 @@
+<video
+  preload="metadata"
+  playsinline
+  webkit-playsinline
+  src="../../../assets/videos/{{ id }}.mp4#t=0.1"
+  type="video/mp4"
+  (click)="ontoggle()"
+  #video
+  (ended)="onVideoEnd()"
+></video>
+<div class="overlay" #overlay (click)="ontoggle()" (click)="clickOnce(true)">
+  <div class="play-btn" #playBtn *ngIf="isplay">
+    <img src="../../../assets/images/rounded-play.png" alt="" />
+  </div>
+  <div class="pause-btn" #pauseBtn *ngIf="ispaused">
+    <img src="../../../assets/images/rounded-pause.png" alt="" />
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="question-bubble">
+  {{ question.winningMsg }}
+</div>
+<app-video-player
+  [id]="whichTimeUser"
+  (msgFunToParent)="msgToParent = true"
+></app-video-player>
+<ng-container *ngIf="msgToParent === true">
+  <div [appInactive]="disableInputs">
+    <div class="question-bubble">{{ question.question }}</div>
+    <div class="option">
+      <input
+        type="radio"
+        class="btn-check"
+        name="right-answer"
+        id="right-answer-op1"
+        autocomplete="off"
+      />
+      <label
+        [appClickColor]="'#7e1615'"
+        class="btn"
+        for="right-answer-op1"
+        (click)="select(question.option1.correct)"
+        >{{ question.option1.value }}</label
+      >
+      <input
+        type="radio"
+        class="btn-check"
+        name="wrong-answer"
+        id="wrong-answer-op2"
+        autocomplete="off"
+      />
+      <label
+        [appClickColor]="'#7e1615'"
+        class="btn ms-1"
+        for="wrong-answer-op2"
+        (click)="select(question.option2.correct)"
+        >{{ question.option2.value }}</label
+      >
+    </div>
+  </div>
+</ng-container>
+
+<div *ngIf="showProceedMessage == true">
+  <div class="question-bubble">
+    {{ question.congratsReceiveSMS }}
+  </div>
+  <div class="question-bubble">{{ question.remainingMsg }}</div>
+</div>
+
+<div *ngIf="showEndMessage == true">
+  <div class="question-bubble">
+    {{ question.incorrectAnswer }}
+  </div>
+</div>

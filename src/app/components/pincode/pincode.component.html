@@ -1,0 +1,39 @@
+<div>
+  <div class="question-bubble">
+    {{ data?.loop ? language.invalidPincode : language.kindlyEnterPincode }}
+  </div>
+  <div style="clear: both"></div>
+  <div class="text-end" *ngIf="showPinCodeBubble">{{ pinCode }}</div>
+  <div style="clear: both"></div>
+  <div
+    [appInactive]="disableInputs"
+    *ngIf="!showPinCodeBubble"
+    class="position-relative"
+  >
+    <input
+      type="number"
+      onkeydown="javascript: return event.keyCode === 8 ||
+    event.keyCode === 46 ? true : !isNaN(Number(event.key))"
+      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+      class="form-control"
+      placeholder="PINCODE"
+      [(ngModel)]="pinCode"
+      (ngModelChange)="validatePinCode()"
+      autocomplete="off"
+      maxlength="6"
+    />
+    <button
+      class="send-btn-svg"
+      [disabled]="!isPinCodeValid"
+      (click)="sendPinCode()"
+    >
+      <img
+        width="100%"
+        class="bg-transparent"
+        #sendSvgImage
+        src="../../../assets/images/send-btn-svg.svg"
+        alt="send-btn-svg"
+      />
+    </button>
+  </div>
+</div>
